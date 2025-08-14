@@ -4,7 +4,7 @@
 
 ### 1. Install .NET SDK
 Install **.NET SDK 10.0.0-preview.7.25380.108**:  
-[Download for Windows x64](https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-preview.7.25380.108/dotnet-sdk-10.0.100-preview.7.25380.108-win-x64.exe)
+[Download](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
 ---
 
