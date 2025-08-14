@@ -3,12 +3,14 @@
 ## Step-by-step Setup Guide
 
 ### 1. Install .NET SDK
+
 Install **.NET SDK 10.0.0-preview.7.25380.108**:  
 [Download](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
 ---
 
 ### 2. Create a Local Database in Docker
+
 Run PostgreSQL 15 in Docker:
 
 ```bash
@@ -18,19 +20,37 @@ docker run -d --name Tongue-Postgres --restart=no -e POSTGRES_USER=postgres -e P
 ---
 
 ### 3. Update Database with Migrations
+
 Run EF Core migrations:
 
 ```bash
 dotnet ef database update --project Tongue.Data\Tongue.Data.csproj --startup-project Tongue.Web\Tongue.Web.csproj --context Tongue.Data.DbContexts.TonguePgDbContext --configuration Debug
 ```
 
+or
+
+```bash
+dotnet ef database update \
+  --project Tongue.Data/Tongue.Data.csproj \
+  --startup-project Tongue.Web/Tongue.Web.csproj \
+  --context Tongue.Data.DbContexts.TonguePgDbContext \
+  --configuration Debug
+```
+
 ---
 
 ### 4. Run the Application
+
 Run with HTTPS:
 
 ```bash
 dotnet run --project Tongue.Web\Tongue.Web.csproj --launch-profile https
+```
+
+or
+
+```bash
+dotnet run --project Tongue.Web/Tongue.Web.csproj --launch-profile https
 ```
 
 Run with HTTP:
@@ -42,6 +62,7 @@ dotnet run --project Tongue.Web\Tongue.Web.csproj --launch-profile http
 ---
 
 ### 5. Swagger UI
+
 - HTTP: [http://localhost:5256/swagger/index.html](http://localhost:5256/swagger/index.html)
 - HTTPS: [https://localhost:7098/swagger/index.html](https://localhost:7098/swagger/index.html)
 
@@ -50,12 +71,15 @@ dotnet run --project Tongue.Web\Tongue.Web.csproj --launch-profile http
 ## Additional Commands
 
 ### Add a New Migration
-Change ```MIGRATION_NAME_EXAMPLE``` to your migration name
+
+Change `MIGRATION_NAME_EXAMPLE` to your migration name
+
 ```bash
 dotnet ef migrations add --project Tongue.Data\Tongue.Data.csproj --startup-project Tongue.Web\Tongue.Web.csproj --context Tongue.Data.DbContexts.TonguePgDbContext --configuration Debug MIGRATION_NAME_EXAMPLE --output-dir Migrations
 ```
 
 ### Update Database
+
 ```bash
 dotnet ef database update --project Tongue.Data\Tongue.Data.csproj  --startup-project Tongue.Web\Tongue.Web.csproj --context Tongue.Data.DbContexts.TonguePgDbContext --configuration Debug
 ```
